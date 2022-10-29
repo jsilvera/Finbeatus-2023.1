@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('public/backend/plugins/bootstrap/css/bootstrap.min.css') }}">
-    <link href="{{ asset('public/auth/css/app.css?v=1.0') }}" rel="stylesheet">
+    <link href="{{ asset('public/auth/css/app.css?v=1.1') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">

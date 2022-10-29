@@ -74,13 +74,9 @@
                                     {{ _lang('Login') }}
                                 </button>
 
-                                @if(get_option('google_login') == 'enabled')
-                                    <a href="{{ url('/login/google') }}" class="btn btn-google btn-block"> {{ _lang('Continue With Google') }}</a>
-								@endif
-
-                                @if(get_option('facebook_login') == 'enabled')
-                                    <a href="{{ url('/login/facebook') }}" class="btn btn-facebook btn-block"> {{ _lang('Continue With Facebook') }}</a>
-                                @endif								
+                                @if(get_option('member_signup') == 1)
+                                    <a href="{{ route('register') }}" class="btn btn-link btn-register">{{ _lang('Create Account') }}</a>
+								@endif							
                             </div>
                         </div>
 						

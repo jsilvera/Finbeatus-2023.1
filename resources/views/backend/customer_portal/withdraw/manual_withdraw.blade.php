@@ -51,6 +51,7 @@
 							<h6 class="text-info text-center"><b>({{ decimalPlace($withdraw_method->fixed_charge, currency($withdraw_method->currency->name)) }} + {{ $withdraw_method->charge_in_percentage }}%) {{ _lang('charge will be deduct from withdrawal amount') }}</b></h6>
 						</div>
 
+						@if($withdraw_method->requirements)
 						@foreach($withdraw_method->requirements as $requirement)
 						<div class="col-md-6">
 							<div class="form-group">
@@ -59,6 +60,7 @@
 							</div>
 						</div>
 						@endforeach
+						@endif
 
 						@if($withdraw_method->descriptions != '')
 						<div class="col-md-12">

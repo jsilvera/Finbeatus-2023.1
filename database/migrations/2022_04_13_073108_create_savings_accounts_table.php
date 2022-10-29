@@ -18,7 +18,7 @@ class CreateSavingsAccountsTable extends Migration
             $table->string('account_number', 30);
             $table->bigInteger('member_id')->unsigned();
             $table->bigInteger('savings_product_id')->unsigned();
-            $table->integer('status')->comment('1 = action | 2 = deactive');
+            $table->integer('status')->comment('1 = action | 2 = Deactivate');
             $table->decimal('opening_balance', 10, 2);
             $table->text('description')->nullable();
             $table->bigInteger('created_user_id')->nullable();

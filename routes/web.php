@@ -20,7 +20,7 @@ Route::group(['middleware' => ['install']], function () {
 		return redirect('login');
 	});
 
-	Auth::routes(['register' => false]);
+	Auth::routes();
 	Route::get('/logout', 'Auth\LoginController@logout');
 
 	Route::group(['middleware' => ['auth', 'verified']], function () {
@@ -126,6 +126,9 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('dashboard/recent_transaction_widget', 'DashboardController@recent_transaction_widget')->name('dashboard.recent_transaction_widget');
 
 			//Member Controller
+			Route::match(['get', 'post'], 'members/accept_request/{id}', 'MemberController@accept_request')->name('members.accept_request');
+			Route::get('members/reject_request/{id}', 'MemberController@reject_request')->name('members.reject_request');
+			Route::get('members/pending_requests', 'MemberController@pending_requests')->name('members.pending_requests');
 			Route::get('members/get_member_transaction_data/{member_id}', 'MemberController@get_member_transaction_data');
 			Route::get('members/get_table_data', 'MemberController@get_table_data');
 			Route::post('members/send_email', 'MemberController@send_email')->name('members.send_email');

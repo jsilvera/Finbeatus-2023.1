@@ -16,7 +16,7 @@ class Loan extends Model {
 
     protected static function booted() {
         static::addGlobalScope('borrower_id', function (Builder $builder) {
-            if (auth()->user()->user_type != 'admin') {
+            if (auth()->user()->user_type == 'user') {
                 return $builder->whereHas('borrower', function (Builder $query) {
                     $query->where('branch_id', auth()->user()->branch_id);
                 });

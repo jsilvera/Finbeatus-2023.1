@@ -29,7 +29,7 @@
 		<!-- Others css -->
 		<link rel="stylesheet" href="{{ asset('public/backend/assets/css/typography.css') }}">
 		<link rel="stylesheet" href="{{ asset('public/backend/assets/css/default-css.css') }}">
-		<link rel="stylesheet" href="{{ asset('public/backend/assets/css/styles.css?v=1.0') }}">
+		<link rel="stylesheet" href="{{ asset('public/backend/assets/css/styles.css?v=1.1') }}">
 		<link rel="stylesheet" href="{{ asset('public/backend/assets/css/responsive.css?v=1.0') }}">
 		
 		<!-- Modernizr -->

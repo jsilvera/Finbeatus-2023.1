@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Customer;
 
-use App\Models\Loan;
-use App\Models\Guarantor;
-use App\Models\LoanPayment;
-use App\Models\Transaction;
-use Illuminate\Http\Request;
-use App\Models\SavingsAccount;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Loan;
+use App\Models\LoanPayment;
+use App\Models\LoanProduct;
+use App\Models\SavingsAccount;
+use App\Models\Transaction;
 use App\Utilities\LoanCalculator as Calculator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class LoanController extends Controller {
 
@@ -134,11 +134,24 @@ class LoanController extends Controller {
             @ini_set('max_execution_time', 0);
             @set_time_limit(0);
 
+            //Initial Validation
+            $request->validate([
+                'loan_product_id' => 'required',
+            ], [
+                'loan_product_id.required' => 'Loan product field is required',
+            ]);
+
+            $loanProduct = LoanProduct::find($request->loan_product_id);
+
+            $min_amount = $loanProduct->minimum_amount;
+            $max_amount = $loanProduct->maximum_amount;
+
+
             $validator = Validator::make($request->all(), [
                 'loan_product_id'    => 'required',
                 'currency_id'        => 'required',
                 'first_payment_date' => 'required',
-                'applied_amount'     => 'required|numeric',
+                'applied_amount'     => "required|numeric|min:$min_amount|max:$max_amount",
                 'attachment'         => 'nullable|mimes:jpeg,png,jpg,doc,pdf,docx,zip',
             ]);
 

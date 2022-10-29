@@ -25,7 +25,7 @@ class CreateSavingsProductsTable extends Migration {
             $table->decimal('minimum_deposit_amount', 10, 2)->default(0);
             $table->decimal('maintenance_fee', 10, 2)->default(0);
             $table->integer('maintenance_fee_posting_period')->nullable();
-            $table->integer('status')->comment('1 = action | 2 = deactive');
+            $table->integer('status')->comment('1 = action | 2 = Deactivate');
             $table->timestamps();
 
             $table->foreign('currency_id')->references('id')->on('currency')->onDelete('cascade');

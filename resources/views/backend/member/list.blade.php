@@ -70,9 +70,12 @@
 		   "paginate": {
 			  "first":      "{{ _lang('First') }}",
 			  "last":       "{{ _lang('Last') }}",
-			  "previous": "<i class='ti-arrow-circle-left'></i>",
-        	  "next" : "<i class='ti-arrow-circle-right'></i>",
+			  "previous": "<i class='ti-angle-left'></i>",
+        	  "next" : "<i class='ti-angle-right'></i>",
 		  }
+		},
+		drawCallback: function () {
+			$(".dataTables_paginate > .pagination").addClass("pagination-bordered");
 		}
 	});
 

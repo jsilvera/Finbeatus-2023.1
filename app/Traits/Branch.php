@@ -8,7 +8,7 @@ trait Branch {
 
     public static function bootBranch() {
         static::addGlobalScope('branch_id', function (Builder $builder) {
-            if (auth()->user()->user_type != 'admin') {
+            if (auth()->user()->user_type == 'user') {
                 return $builder->where('branch_id', auth()->user()->branch_id);
             }else {
                 if (session('branch_id') != '') {

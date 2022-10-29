@@ -1293,6 +1293,15 @@ table.dbkit-table tr td {
     font-size: 14px;
 }
 
+.pagination-bordered .page-link {
+    border-radius: 6px !important;
+    margin: 0 3px;
+    border: none;
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: #5f27cd;
+  }
+
 /* team member area */
 
 .team-search input {

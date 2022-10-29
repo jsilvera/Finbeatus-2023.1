@@ -1110,8 +1110,8 @@
 					"paginate": {
 						"first": $lang_first,
 						"last": $lang_last,
-						"previous": "<i class='ti-arrow-circle-left'></i>",
-						"next": "<i class='ti-arrow-circle-right'></i>"
+						"previous": "<i class='ti-angle-left'></i>",
+						"next": "<i class='ti-angle-right'></i>"
 					},
 					"aria": {
 						"sortAscending": ": activate to sort column ascending",
@@ -1146,8 +1146,8 @@
 			"paginate": {
 				"first": $lang_first,
 				"last": $lang_last,
-				"previous": "<i class='ti-arrow-circle-left'></i>",
-				"next": "<i class='ti-arrow-circle-right'></i>"
+				"previous": "<i class='ti-angle-left'></i>",
+				"next": "<i class='ti-angle-right'></i>"
 			},
 			"aria": {
 				"sortAscending": ": activate to sort column ascending",

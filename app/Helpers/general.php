@@ -783,6 +783,8 @@ if (!function_exists('request_count')) {
             $notification_count = \App\Models\DepositRequest::where('status', 0)->count();
         } else if ($request == 'withdraw_requests') {
             $notification_count = \App\Models\WithdrawRequest::where('status', 0)->count();
+        } else if ($request == 'member_requests') {
+            $notification_count = \App\Models\Member::withoutGlobalScopes(['status'])->where('status', 0)->count();
         }
 
         if ($html == false) {
@@ -1024,16 +1026,25 @@ if (!function_exists('time_from_seconds')) {
 
 /* Intelligent Functions */
 if (!function_exists('get_language')) {
-    function get_language() {
-        $language = Cache::get('language');
+	function get_language($force = false) {
 
-        if ($language == '') {
-            $language = get_option('language');
-            \Cache::put('language', $language);
-        }
+		$language = $force == false ? session('language') : '';
 
-        return $language;
-    }
+		if ($language == '') {
+			$language = Cache::get('language');
+		}
+
+		if ($language == '') {
+			$language = get_option('language');
+			if ($language == '') {
+				\Cache::put('language', 'language');
+			} else {
+				\Cache::put('language', $language);
+			}
+
+		}
+		return $language;
+	}
 }
 
 if (!function_exists('get_currency_position')) {

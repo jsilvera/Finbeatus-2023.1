@@ -37,7 +37,7 @@
 				<label class="control-label">{{ _lang('Status') }}</label>						
 				<select class="form-control auto-select" data-selected="{{ old('status',1) }}" name="status" required>
 					<option value="1">{{ _lang('Active') }}</option>
-					<option value="0">{{ _lang('Deactive') }}</option>
+					<option value="0">{{ _lang('Deactivate') }}</option>
 				</select>
 			</div>
 		</div>

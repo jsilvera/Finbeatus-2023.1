@@ -20,9 +20,9 @@
     },
     columns: [
       { data: "loan_id", name: "loan_id" },
-      { data: "loan_product.name", name: "loan_product.name" },
-      { data: "borrower.first_name", name: "borrower.first_name" },
-      { data: "borrower.member_no", name: "borrower.member_no" },
+      { data: "loan_product.name", name: "loan_product.name", "defaultContent": "" },
+      { data: "borrower.first_name", name: "borrower.first_name", "defaultContent": "" },
+      { data: "borrower.member_no", name: "borrower.member_no", "defaultContent": "" },
       { data: "release_date", name: "release_date" },
       { data: "applied_amount", name: "applied_amount" },
       { data: "status", name: "status" },
@@ -55,8 +55,8 @@
       paginate: {
         first: $lang_first,
         last: $lang_last,
-        previous: "<i class='ti-arrow-circle-left'></i>",
-        next: "<i class='ti-arrow-circle-right'></i>",
+        previous: "<i class='ti-angle-left'></i>",
+        next: "<i class='ti-angle-right'></i>",
       },
     },
     drawCallback: function () {

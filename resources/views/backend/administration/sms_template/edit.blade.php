@@ -38,7 +38,7 @@
 							<label class="control-label">{{ _lang('Status') }}</label>
 							<select class="form-control auto-select" name="sms_status" data-selected="{{ $emailtemplate->sms_status }}" required>
 								<option value="1">{{ _lang('Active') }}</option>
-								<option value="0">{{ _lang('Deactive') }}</option>
+								<option value="0">{{ _lang('Deactivate') }}</option>
 							</select>
 						</div>
 					</div>

@@ -130,19 +130,19 @@ class EmailSMSTemplateSeeder extends Seeder {
 				"notification_status" => 0,
 				"template_mode" => 0,
 			],
-			/*[
-				                "name"                => "Reset Password",
-				                "slug"                => "RESET_PASSWORD",
-				                "subject"             => "Reset Password Notification",
-				                "email_body"          => '<p>You are receiving this email because we received a password reset request for your account.</p><p><a style="background: #2d3748; color: #fff; display: inline-block; border-bottom: 8px solid #2d3748; border-left: 18px solid #2d3748; border-right: 18px solid #2d3748; border-top: 8px solid #2d3748; border-radius: 4px; overflow: hidden; text-decoration: none;" title="Reset Password" href="{{password_reset_link}}">Reset Password</a></p><p>This password reset link will expire in 60 minutes.</p><p>If you did not request a password reset, no further action is required.</p><p>&nbsp;</p><div><div>If you are having trouble clicking the "<strong>Reset Password</strong>" button, copy and paste the URL below into your web browser:&nbsp;<a href="{{password_reset_link}}">{{password_reset_link}}</a></div></div>',
-				                "sms_body"            => "",
-				                "notification_body"   => "",
-				                "shortcode"           => "{{password_reset_link}}",
-				                "email_status"        => 0,
-				                "sms_status"          => 0,
-				                "notification_status" => 0,
-				                "template_mode"       => 1,
-			*/
+			[
+				"name" => "Member Request Accepted",
+				"slug" => "MEMBER_REQUEST_ACCEPTED",
+				"subject" => "Member Request Accepted",
+				"email_body" => "<div>\r\n<div>Dear {{name}},</div>\r\n<div>Your member request has been accepted by authority on {{dateTime}}. You can now login to your account by using your email and password.</div>\r\n</div>",
+				"sms_body" => "",
+				"notification_body" => "",
+				"shortcode" => "{{name}} {{member_no}} {{dateTime}}",
+				"email_status" => 0,
+				"sms_status" => 0,
+				"notification_status" => 0,
+				"template_mode" => 1,
+			],
 		]);
 	}
 }

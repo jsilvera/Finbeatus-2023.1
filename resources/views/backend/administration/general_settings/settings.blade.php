@@ -166,6 +166,16 @@
 								</div>
 
 								<div class="col-md-12">
+								  	<div class="form-group">
+										<label class="control-label">{{ _lang('Member Sign Up') }}</label>
+										<select class="form-control" name="member_signup" required>
+											<option value="0" {{ get_setting($settings, 'member_signup') == '0' ? 'selected' : '' }}>{{ _lang('Disabled') }}</option>
+											<option value="1" {{ get_setting($settings, 'member_signup') == '1' ? 'selected' : '' }}>{{ _lang('Enabled') }}</option>
+										</select>
+								  	</div>
+								</div>
+
+								<div class="col-md-12">
 								  <div class="form-group">
 									<button type="submit" class="btn btn-primary"><i class="ti-check-box"></i>&nbsp;{{ _lang('Save Settings') }}</button>
 								  </div>

@@ -42,8 +42,8 @@
 		ajax: '{{ url('admin/savings_accounts/get_table_data') }}',
 		"columns" : [
 			{ data : 'account_number', name : 'account_number' },
-			{ data : 'member.first_name', name : 'member.first_name' },
-			{ data : 'savings_type.name', name : 'savings_type.name' },
+			{ data : 'member.first_name', name : 'member.first_name', 'defaultContent': '' },
+			{ data : 'savings_type.name', name : 'savings_type.name', 'defaultContent': '' },
 			{ data : 'status', name : 'status' },
 			{ data : "action", name : "action" },
 		],
@@ -67,9 +67,12 @@
 		   "paginate": {
 			  "first":      "{{ _lang('First') }}",
 			  "last":       "{{ _lang('Last') }}",
-			  "previous": "<i class='ti-arrow-circle-left'></i>",
-        	  "next" : "<i class='ti-arrow-circle-right'></i>",
+			  "previous": "<i class='ti-angle-left'></i>",
+        	  "next" : "<i class='ti-angle-right'></i>",
 		  }
+		},
+		drawCallback: function () {
+			$(".dataTables_paginate > .pagination").addClass("pagination-bordered");
 		}
 	});
 

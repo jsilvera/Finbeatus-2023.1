@@ -94,6 +94,7 @@
 							</div>
 							<hr>
 							<div class="row" id="custom_fields">
+								@if($depositmethod->requirements)
 								@foreach($depositmethod->requirements as $requirement)
 								<div class="col-md-6">
 									<div class="form-group">
@@ -107,6 +108,7 @@
 									</div>
 								</div>
 								@endforeach
+								@endif
 							</div>
 						</div>
 

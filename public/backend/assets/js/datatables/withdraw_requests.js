@@ -19,9 +19,9 @@
       },
     },
     columns: [
-      { data: "member.first_name", name: "member.first_name" },
-      { data: "account.account_number", name: "account.account_number" },
-      { data: "account.savings_type.currency.name", name: "account.savings_type.currency.name" },
+      { data: "member.first_name", name: "member.first_name", "defaultContent": "" },
+      { data: "account.account_number", name: "account.account_number", "defaultContent": "" },
+      { data: "account.savings_type.currency.name", name: "account.savings_type.currency.name", "defaultContent": "" },
       { data: "amount", name: "amount" },
       { data: "method.name", name: "method.name" },
       { data: "status", name: "status" },
@@ -54,8 +54,8 @@
       paginate: {
         first: $lang_first,
         last: $lang_last,
-        previous: "<i class='ti-arrow-circle-left'></i>",
-        next: "<i class='ti-arrow-circle-right'></i>",
+        previous: "<i class='ti-angle-left'></i>",
+        next: "<i class='ti-angle-right'></i>",
       },
     },
     drawCallback: function () {

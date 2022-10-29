@@ -1,6 +1,7 @@
 @php 
-$deposit_requests = request_count('deposit_requests',true);
-$withdraw_requests = request_count('withdraw_requests',true);
+$deposit_requests = request_count('deposit_requests', true);
+$withdraw_requests = request_count('withdraw_requests', true);
+$member_requests = request_count('member_requests', true);
 $permissions = permission_list();
 @endphp
 
@@ -9,7 +10,7 @@ $permissions = permission_list();
 </li>
 
 <li>
-	<a href="javascript: void(0);"><i class="fas fa-user-friends"></i><span>{{ _lang('Members') }}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+	<a href="javascript: void(0);"><i class="fas fa-user-friends"></i><span>{{ _lang('Members') }} {!! xss_clean($member_requests) !!}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
 	<ul class="nav-second-level" aria-expanded="false">
 		@if (in_array('members.index',$permissions))
 		<li class="nav-item"><a class="nav-link" href="{{ route('members.index') }}">{{ _lang('View Members') }}</a></li>	
@@ -17,6 +18,12 @@ $permissions = permission_list();
 		
 		@if (in_array('members.create',$permissions))
 		<li class="nav-item"><a class="nav-link" href="{{ route('members.create') }}">{{ _lang('Add Member') }}</a></li>	
+		@endif
+
+		@if (in_array('members.pending_requests',$permissions))
+		<li class="nav-item">
+			<a class="nav-link" href="{{ route('members.pending_requests') }}">{{ _lang('Member Requests') }} {!! xss_clean($member_requests) !!}</a>
+		</li>	
 		@endif
 	</ul>
 </li>
