@@ -519,9 +519,9 @@ class MemberController extends Controller {
             DB::commit();
 
             if($member->status == 1){
-                //try {
+                try {
                     $member->notify(new MemberRequestAccepted($member));
-                //} catch (\Exception $e) {}     
+                } catch (\Exception $e) {}     
             }
 
             if (!$request->ajax()) {

@@ -164,7 +164,9 @@ class DepositRequestController extends Controller {
         $depositRequest = DepositRequest::find($id);
         if ($depositRequest->transaction_id != null) {
             $transaction = Transaction::find($depositRequest->transaction_id);
-            $transaction->delete();
+            if($transaction){
+                $transaction->delete();
+            } 
         }
         $depositRequest->delete();
         return redirect()->route('deposit_requests.index')->with('success', _lang('Deleted Successfully'));

@@ -155,7 +155,9 @@ class WithdrawRequestController extends Controller {
         $withdrawRequest = WithdrawRequest::find($id);
         if ($withdrawRequest->transaction_id != null) {
             $transaction = Transaction::find($withdrawRequest->transaction_id);
-            $transaction->delete();
+            if($transaction){
+                $transaction->delete();
+            } 
         }
         $withdrawRequest->delete();
         return redirect()->route('deposit_requests.index')->with('success', _lang('Deleted Successfully'));

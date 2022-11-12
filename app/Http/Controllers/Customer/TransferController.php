@@ -92,7 +92,7 @@ class TransferController extends Controller {
 			$credit->trans_date = now();
 			$credit->member_id = $memeber->id;
 			$credit->savings_account_id = $request->to_account;
-			$credit->amount = convert_currency($debit->account->savings_type->currency_id, $credit->account->savings_type->currency_id, $request->amount);
+			$credit->amount = convert_currency($debit->account->savings_type->currency->name, $credit->account->savings_type->currency->name, $request->amount);
 			$credit->dr_cr = 'cr';
 			$credit->type = 'Transfer';
 			$credit->method = 'Online';
@@ -193,7 +193,7 @@ class TransferController extends Controller {
 			$credit->trans_date = now();
 			$credit->member_id = $receiverAccount->member_id;
 			$credit->savings_account_id = $receiverAccount->id;
-			$credit->amount = convert_currency($debit->account->savings_type->currency_id, $credit->account->savings_type->currency_id, $request->amount);
+			$credit->amount = convert_currency($debit->account->savings_type->currency->name, $credit->account->savings_type->currency->name, $request->amount);
 			$credit->dr_cr = 'cr';
 			$credit->type = 'Transfer';
 			$credit->method = 'Online';

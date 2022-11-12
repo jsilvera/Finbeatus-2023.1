@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Artisan;
 class UpdateController extends Controller {
 
     public function update_migration() {
-        $app_version = '1.3';
+        $app_version = '1.4';
         Artisan::call('migrate', ['--force' => true]);
 
         //Update Seeder

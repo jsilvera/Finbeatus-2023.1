@@ -89,7 +89,7 @@ class DepositController extends Controller {
 
             $convertedAdmount = convert_currency($accountType->currency->name, $deposit_method->currency->name, $request->amount);
 
-            //Charge Calculation
+            //Charge Calculation Update
             $charge = $deposit_method->fixed_charge;
             $charge += ($deposit_method->charge_in_percentage / 100) * $convertedAdmount;
 

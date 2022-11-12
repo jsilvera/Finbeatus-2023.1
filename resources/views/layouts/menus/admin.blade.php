@@ -1,7 +1,8 @@
-@php 
+@php
 $deposit_requests = request_count('deposit_requests', true);
 $withdraw_requests = request_count('withdraw_requests', true);
 $member_requests = request_count('member_requests', true);
+$pending_loans = request_count('pending_loans', true);
 @endphp
 
 <li>
@@ -15,22 +16,27 @@ $member_requests = request_count('member_requests', true);
 <li>
 	<a href="javascript: void(0);"><i class="fas fa-user-friends"></i><span>{{ _lang('Members') }} {!! xss_clean($member_requests) !!}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
 	<ul class="nav-second-level" aria-expanded="false">
-		<li class="nav-item"><a class="nav-link" href="{{ route('members.index') }}">{{ _lang('View Members') }}</a></li>	
-		<li class="nav-item"><a class="nav-link" href="{{ route('members.create') }}">{{ _lang('Add Member') }}</a></li>	
+		<li class="nav-item"><a class="nav-link" href="{{ route('members.index') }}">{{ _lang('View Members') }}</a></li>
+		<li class="nav-item"><a class="nav-link" href="{{ route('members.create') }}">{{ _lang('Add Member') }}</a></li>
 		<li class="nav-item">
 			<a class="nav-link" href="{{ route('members.pending_requests') }}">
 			{{ _lang('Member Requests') }}
 			{!! xss_clean($member_requests) !!}
 			</a>
-		</li>	
+		</li>
 	</ul>
 </li>
 
 <li>
-	<a href="javascript: void(0);"><i class="fas fa-hand-holding-usd"></i><span>{{ _lang('Loans') }}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+	<a href="javascript: void(0);"><i class="fas fa-hand-holding-usd"></i><span>{{ _lang('Loans') }} {!! xss_clean($pending_loans) !!}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
 	<ul class="nav-second-level" aria-expanded="false">
 		<li class="nav-item"><a class="nav-link" href="{{ route('loans.index') }}">{{ _lang('All Loans') }}</a></li>
-		<li class="nav-item"><a class="nav-link" href="{{ route('loans.filter', 'pending') }}">{{ _lang('Pending Loans') }}</a></li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ route('loans.filter', 'pending') }}">
+				{{ _lang('Pending Loans') }}
+				{!! xss_clean($pending_loans) !!}
+			</a>
+		</li>
 		<li class="nav-item"><a class="nav-link" href="{{ route('loans.filter', 'active') }}">{{ _lang('Active Loans') }}</a></li>
 		<li class="nav-item"><a class="nav-link" href="{{ route('loans.admin_calculator') }}">{{ _lang('Loan Calculator') }}</a></li>
 		<li class="nav-item"><a class="nav-link" href="{{ route('loan_products.index') }}">{{ _lang('Loan Products') }}</a></li>
@@ -53,7 +59,7 @@ $member_requests = request_count('member_requests', true);
 	<ul class="nav-second-level" aria-expanded="false">
 		<li class="nav-item"><a class="nav-link" href="{{ route('transactions.create') }}?type=deposit">{{ _lang('Deposit Money') }}</a></li>
 		<li class="nav-item"><a class="nav-link" href="{{ route('deposit_requests.index') }}">
-				{{ _lang('Deposit Requests') }} 
+				{{ _lang('Deposit Requests') }}
 				{!! xss_clean($deposit_requests) !!}
 			</a></li>
 	</ul>
@@ -64,7 +70,7 @@ $member_requests = request_count('member_requests', true);
 	<ul class="nav-second-level" aria-expanded="false">
 		<li class="nav-item"><a class="nav-link" href="{{ route('transactions.create') }}?type=withdraw">{{ _lang('Withdraw Money') }}</a></li>
 		<li class="nav-item"><a class="nav-link" href="{{ route('withdraw_requests.index') }}">
-				{{ _lang('Withdraw Requests') }} 
+				{{ _lang('Withdraw Requests') }}
 				{!! xss_clean($withdraw_requests) !!}
 			</a></li>
 	</ul>
@@ -103,8 +109,8 @@ $member_requests = request_count('member_requests', true);
 	<a href="javascript: void(0);"><i class="ti-user"></i><span>{{ _lang('User Management') }}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
 	<ul class="nav-second-level" aria-expanded="false">
 		<li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}">{{ _lang('All Users') }}</a></li>
-		<li class="nav-item"><a class="nav-link" href="{{ route('roles.index') }}">{{ _lang('User Roles') }}</a></li>		
-		<li class="nav-item"><a class="nav-link" href="{{ route('permission.index') }}">{{ _lang('Access Control') }}</a></li>		
+		<li class="nav-item"><a class="nav-link" href="{{ route('roles.index') }}">{{ _lang('User Roles') }}</a></li>
+		<li class="nav-item"><a class="nav-link" href="{{ route('permission.index') }}">{{ _lang('Access Control') }}</a></li>
 	</ul>
 </li>
 

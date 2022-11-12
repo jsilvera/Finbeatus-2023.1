@@ -1,7 +1,8 @@
-@php 
+@php
 $deposit_requests = request_count('deposit_requests', true);
 $withdraw_requests = request_count('withdraw_requests', true);
 $member_requests = request_count('member_requests', true);
+$pending_loans = request_count('pending_loans', true);
 $permissions = permission_list();
 @endphp
 
@@ -13,30 +14,35 @@ $permissions = permission_list();
 	<a href="javascript: void(0);"><i class="fas fa-user-friends"></i><span>{{ _lang('Members') }} {!! xss_clean($member_requests) !!}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
 	<ul class="nav-second-level" aria-expanded="false">
 		@if (in_array('members.index',$permissions))
-		<li class="nav-item"><a class="nav-link" href="{{ route('members.index') }}">{{ _lang('View Members') }}</a></li>	
+		<li class="nav-item"><a class="nav-link" href="{{ route('members.index') }}">{{ _lang('View Members') }}</a></li>
 		@endif
-		
+
 		@if (in_array('members.create',$permissions))
-		<li class="nav-item"><a class="nav-link" href="{{ route('members.create') }}">{{ _lang('Add Member') }}</a></li>	
+		<li class="nav-item"><a class="nav-link" href="{{ route('members.create') }}">{{ _lang('Add Member') }}</a></li>
 		@endif
 
 		@if (in_array('members.pending_requests',$permissions))
 		<li class="nav-item">
 			<a class="nav-link" href="{{ route('members.pending_requests') }}">{{ _lang('Member Requests') }} {!! xss_clean($member_requests) !!}</a>
-		</li>	
+		</li>
 		@endif
 	</ul>
 </li>
 
 <li>
-	<a href="javascript: void(0);"><i class="fas fa-hand-holding-usd"></i><span>{{ _lang('Loans') }}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+	<a href="javascript: void(0);"><i class="fas fa-hand-holding-usd"></i><span>{{ _lang('Loans') }} {!! xss_clean($pending_loans) !!}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
 	<ul class="nav-second-level" aria-expanded="false">
 		@if (in_array('loans.index',$permissions))
 		<li class="nav-item"><a class="nav-link" href="{{ route('loans.index') }}">{{ _lang('All Loans') }}</a></li>
 		@endif
-		
+
 		@if (in_array('loans.filter',$permissions))
-		<li class="nav-item"><a class="nav-link" href="{{ route('loans.filter', 'pending') }}">{{ _lang('Pending Loans') }}</a></li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ route('loans.filter', 'pending') }}">
+				{{ _lang('Pending Loans') }}
+				{!! xss_clean($pending_loans) !!}
+			</a>
+		</li>
 		@endif
 
 		@if (in_array('loans.filter',$permissions))
@@ -59,7 +65,7 @@ $permissions = permission_list();
 		@if (in_array('savings_accounts.index',$permissions))
 		<li class="nav-item"><a class="nav-link" href="{{ route('savings_accounts.index') }}">{{ _lang('All Accounts') }}</a></li>
 		@endif
-		
+
 		@if (in_array('interest_calculation.calculator',$permissions))
 		<li class="nav-item"><a class="nav-link" href="{{ route('interest_calculation.calculator') }}">{{ _lang('Interest Calculation') }}</a></li>
 		@endif
@@ -76,7 +82,7 @@ $permissions = permission_list();
 		@if (in_array('deposit_requests.index',$permissions))
 		<li class="nav-item">
 			<a class="nav-link" href="{{ route('deposit_requests.index') }}">
-				{{ _lang('Deposit Requests') }} 
+				{{ _lang('Deposit Requests') }}
 				{!! xss_clean($deposit_requests) !!}
 			</a>
 		</li>
@@ -93,7 +99,7 @@ $permissions = permission_list();
 		@if (in_array('withdraw_requests.index',$permissions))
 		<li class="nav-item">
 			<a class="nav-link" href="{{ route('withdraw_requests.index') }}">
-				{{ _lang('Withdraw Requests') }} 
+				{{ _lang('Withdraw Requests') }}
 				{!! xss_clean($withdraw_requests) !!}
 			</a>
 		</li>
